@@ -1,0 +1,28 @@
+{
+  "name": "wufoo",
+  "version": "0.0.0",
+  "description": "Wrapper for the Wufoo API",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedwood/node-wufoo"
+  },
+  "keywords": [
+    "wufoo",
+    "api",
+    "node"
+  ],
+  "author": "Jed Wood",
+  "license": "BSD",
+  "dependencies": {
+    "request": "~2.21.0"
+  },
+  "devDependencies": {
+    "chai": "~1.6.0",
+    "mocha": "~1.9.0",
+    "supertest": "~0.6.0"
+  }
+}
