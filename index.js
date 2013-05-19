@@ -4,7 +4,7 @@ var apiKey, subdomain, baseURI;
 var wuAgent = new require('http').Agent;
 wuAgent.maxSockets = 25;
 
-var logging = true;
+var logging = false;
 
 var config = function(key, sd) {
   apiKey = key;

@@ -1,6 +1,6 @@
 {
   "name": "wufoo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Wrapper for the Wufoo API",
   "main": "index.js",
   "scripts": {
