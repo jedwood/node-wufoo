@@ -25,6 +25,22 @@ var fields = function(formId, cb) {
   wuGet('forms/'+formId+'/fields', cb);
 };
 
+var webhook = function(formId, hookObj, cb) {
+  if (typeof formId !== "string") return formId(new Error("form identifier not defined"));
+  if (typeof hookObj === "function") return hookObj(new Error("hookObj not defined"));
+  if (checkCreds()) {
+    if (logging) console.log('Calling: webhook https://' + subdomain + '.wufoo.com/api/v3/forms/' + formId + '/webhooks.json');
+    var opts = wOpts();
+    opts.form = hookObj;
+    request.put('https://' + subdomain + '.wufoo.com/api/v3/forms/' + formId + '/webhooks.json', opts, function (error, response, body) {
+      if (logging) console.log(body);
+      wuResponse(error, response, body, cb);
+    });
+  } else {
+    cb(new Error("apiKey or subdomain not defined"), null);
+  }
+}
+
 var submit = function(formId, formData, cb) {
   if (arguments.length < 3) {
     if (typeof formId === "function") return formId(new Error("form identifier not defined"));
@@ -99,3 +115,4 @@ module.exports.forms = forms;
 module.exports.form = form;
 module.exports.fields = fields;
 module.exports.submit = submit;
+module.exports.webhook = webhook;

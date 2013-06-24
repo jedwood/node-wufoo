@@ -3,7 +3,7 @@ var wu = require('../index.js');
 var config = require('./config');
 
 describe('POST /entries', function() {
-  wu.config('R74O-RZPC-BZW0-W0TM', 'wufooapi');
+  wu.config(config.myOwnWorkingAPIKey, config.myOwnWorkingSubdomain);
 
   it('errors if form id not included', function(done) {
     wu.submit(function(err, res) {
@@ -14,7 +14,7 @@ describe('POST /entries', function() {
   });
 
   it('errors if formData not included', function(done) {
-    wu.submit(myOwnWorkingSubdomain, function(err, res) {
+    wu.submit(config.myOwnWorkingSubdomain, function(err, res) {
       err.should.be.an('object').and.have.property('message');
       err.message.should.equal('formData not defined');
       done();
